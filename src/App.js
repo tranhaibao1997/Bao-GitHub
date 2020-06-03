@@ -11,39 +11,27 @@ function App() {
     getAPIFromGit()
   }, [])
   let [token, setToken] = useState(null)
-  let [reponsitory,setReponsitory]=useState(null)
+  let [reponsitory, setReponsitory] = useState(null)
   console.log(token)
 
 
   async function getAPIFromGit() {
-    let url = `https://api.github.com/search/repositories?q="facebook/react"&page=1&per_page=20}`
+    let url = `https://api.github.com/`
     let res = await Axios.get(url)
     console.log(res.data)
     setReponsitory(res.data.items)
   }
-    // async function sendToAPI() {
-  //   const issue = { title: title, body: details };
-  //   const url = `https://api.github.com/repos/${props.owner}/${props.repos}/issues`;
-  //   const response = await fetch(url, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/x-www-form-urlencoded",
-  //       Authorization: `token ${token}`
-  //     },
-  //     body: JSON.stringify(issue)
-  //   });
-  // }
+   function getGitTags(url) {
+ console.log(url)
+    
+   
+  }
+ 
 
   return (
     <>
       <Login setToken={setToken}></Login>
-      {
-        reponsitory ?reponsitory.map(elm=>{return(
-          <div>
-            <h1>{elm.name}</h1>
-          </div>
-        )})   :""
-      }
+    
     </>
   );
 
